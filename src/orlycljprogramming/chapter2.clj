@@ -13,9 +13,20 @@
 
 ; calling a function twice
 (defn call-twice
-  "do anything I ask twice"
-  [f x]
+  "do anything I ask twice
+  [f x]"
   (f x)
   (f x)
   )
 (call-twice println 123)
+
+(max 5 6)
+(require 'clojure.string)
+(clojure.string/lower-case "Clojure")
+
+;maps
+(map clojure.string/lower-case  ["Java" "Ruby"
+                                 "World" "Peace" "Python"])
+(map * [1 2 3 4] [1 2 3 4])
+
+(reduce max [0 -3 10 48])

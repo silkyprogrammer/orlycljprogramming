@@ -30,3 +30,21 @@
 (map * [1 2 3 4] [1 2 3 4])
 
 (reduce max [0 -3 10 48])
+
+(reduce
+  (fn [m v]
+    (assoc m v (* v v)))
+  {}
+  [1 2 3 4 5])
+
+(reduce
+  #(assoc % %2 (* %2 %2))
+  {}
+  [1 2 3 4 5])
+
+(apply hash-map [:a 5 :b 6])
+(def args [2 -2 10])
+(apply * 0.5 3 args)
+
+(def only-strings (partial filter string?))
+(only-strings ["a" 5 "b" 6])

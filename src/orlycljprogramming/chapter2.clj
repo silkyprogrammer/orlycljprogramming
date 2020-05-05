@@ -48,3 +48,19 @@
 
 (def only-strings (partial filter string?))
 (only-strings ["a" 5 "b" 6])
+
+;Function compositions
+(defn negated-sum-str
+  "Function compositions"
+  [& numbers]
+  (str (- (apply + numbers)))
+  )
+
+(def negated-sum-str (comp str - +))
+
+(require '[clojure.string :as str])
+(def camel->keyword (comp keyword
+                          str/join
+                          (partial interpose \-)
+                          (partial map str/lower-case)
+                          #(str/split % #"(?<=[a-z])(?=[A-Z])")))

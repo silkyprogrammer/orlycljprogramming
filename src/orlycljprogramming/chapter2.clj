@@ -64,3 +64,18 @@
                           (partial interpose \-)
                           (partial map str/lower-case)
                           #(str/split % #"(?<=[a-z])(?=[A-Z])")))
+
+(defn camel->keyword2
+  "A different approach"
+  [s]
+  (->> (str/split s #"(?<=[a-z])(?=[A-Z])")
+       (map str/lower-case)
+       (interpose \-)
+       str/join
+       keyword))
+(def camel-pairs->map
+    (comp (partial apply hash-map)
+          (partial map-indexed (fn [i x]
+                                 (if (odd? i)
+                                   x
+                                   (camel->keyword x))))))

@@ -79,3 +79,35 @@
                                  (if (odd? i)
                                    x
                                    (camel->keyword x))))))
+
+; HOF (higher order functions)
+(defn adder
+  "A trivial example of HOF"
+  [n]
+  (fn [x] (+ n x)))
+
+(defn doubler
+  "A less trivial function example"
+  [f]
+  (fn [& args]
+    (* 2 (apply f args))))
+(def double-+ (doubler +))
+
+(defn prime?
+  "Check whether given integer is Prime or not"
+  [n]
+  (cond
+    (== 1 n) false
+    (== 2 n) true
+    (even? n) false
+    :else (->> (range 3 (inc (Math/sqrt n)) 2)
+               (filter #(zero? (rem n %)))
+               empty?)))
+;Memoization
+(let [m-prime? (memoize prime?)]
+  (time (m-prime? 1125899906842679))
+  (time (m-prime? 1125899906842679)))
+;results
+;"Elapsed time: 604.370919 msecs"
+;"Elapsed time: 0.013111 msecs"
+

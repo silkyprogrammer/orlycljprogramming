@@ -33,6 +33,42 @@
 (def lst '(1 2 3))
 (conj lst 0)
 (conj lst 0 -1)
+(conj lst 10)
 (seq lst)
+(count lst)
+
+(seq "Clojure")
+(seq {:a 4 :b 5})
+(seq (java.util.ArrayList. (range 5)))
+(seq (into-array ["Clojure" "Programming"]))
+(seq [])
+(seq nil)
+(map str "Clojure")
+(set "Programming")
+
+
+(first "Clojure")
+(first (map str  (set "Programming")))
+(rest "Clojure")
+(rest (map str  (set "Programming")))
+(next "Clojure")
+(next (map str  (set "Programming")))
+
+(def x [1 2 3 ])
+(= (next x)
+   (seq (rest x)))
+(rest x)
+(seq (rest x))
+(next x)
+
+(doseq [x (range 3)]
+  (println x))
+(let [r (range 3)
+      rst (rest r)]
+  (prn (map str rst))
+  (prn (map #(+ 100 %) r))
+  (prn (conj r -1) (conj rst 42)))
+
+
 
 

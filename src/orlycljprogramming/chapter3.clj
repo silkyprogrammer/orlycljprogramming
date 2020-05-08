@@ -69,6 +69,40 @@
   (prn (map #(+ 100 %) r))
   (prn (conj r -1) (conj rst 42)))
 
+(let [s (range 1e6)]
+  (time (count s)))
+
+(let [s (apply list (range 1e6))]
+  (time (count s)))
+
+(cons 0 (range 1 5))
+(cons :a [:b :c :d])
+(cons 0 (cons 1 (cons 2 (cons 3 (range 4 10)))))
+(list* 0 1 2 3 (range 4 10))
+
+(lazy-seq [1 2 3])
+(defn random-ints
+  "Implementing a lazy sequence. Returns a lazy seq of random integers in the range [0, limit)."
+  [limit]
+  (lazy-seq
+    (cons (rand-int limit)
+          (random-ints limit)))
+  )
 
 
+(defn random-ints
+  [limit]
+  (lazy-seq
+    (println "realizing random number")
+    (cons (rand-int limit)
+          (random-ints limit)))
+  )
+
+(def rands (take 10 (random-ints 50)))
+
+(first rands)
+(nth rands 3)
+(count rands)
+
+(repeatedly 10 (partial rand-int 50))
 

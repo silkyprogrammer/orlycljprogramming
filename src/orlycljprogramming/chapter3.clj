@@ -112,3 +112,25 @@
 (let [[x & rest] (random-ints 50)])
 (dorun (take 5 (random-ints 50)))
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

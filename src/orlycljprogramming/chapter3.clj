@@ -119,16 +119,55 @@
   str
   (remove (set "aeiouy")
   "vowels are useless! or may be not ..."))
+(split-with neg?(range -5 5))
+
+;; This will cause OOM Error
+(let [[t d] (split-with #(< % 12) (range 1e8))]
+  [(count d) (count t)])
+
+;; reverse the computation to get it working.
+(let [[t d] (split-with #(< % 12) (range 1e8))]
+  [(count t) (count d)])
 
 
+;;associative data structure is map
+(def m {:a 1 :b 2 :c 3 :d 4})
+(get m :a)
+(print m)
+(assoc m :e 5)
+(dissoc m :b)
 
+(assoc m
+  :x 4
+  :y 5
+  :z 6)
+(dissoc m :a :c)
 
+(def v [1 2 3])
+(get v 1)
+(get v 10 )
+(get v 10 "not-found")
+;;updating the vector using assoc
+(assoc v
+  1 4
+  0 -12
+  2 :P)
+(assoc v 3 10)
 
+(get #{1 2 3} 2)
+(get #{1 2 3} 4)
+(get #{1 2 3} 4 "not-found")
 
+(when (get #{1 2 3} 2)
+  (println "It contains `2`"))
 
-
-
-
+;; checks whether an item is available at index 0
+(contains? [1 2 3] 0)
+(contains? {:a 1 :b 2} :b)
+(contains? {:a 1 :b 2} 42)
+;; 1 is associated to key 1, hence true , 4 is not there hence false.
+(contains? #{1 2 3} 1)
+(contains? #{1 2 3} 4)
 
 
 

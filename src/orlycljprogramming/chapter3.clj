@@ -169,8 +169,35 @@
 (contains? #{1 2 3} 1)
 (contains? #{1 2 3} 4)
 
+(get "Clojure" 3)
+(contains? (java.util.HashMap.) "not-there")
+(get (into-array [1 2 3])0)
 
+(get {:ethel nil} :lucy)
+(get {:ethel nil} :ethel)
+(find {:ethel nil} :lucy)
+(find {:ethel nil} :ethel)
 
+(if-let [e (find {:a 5 :b 6} :a)]
+  (format "found %s=>%s" (key e) (val e))
+  "not found")
+(if-let [e (find {:a 5 :b 6} :c)]
+  (format "found %s=>%s" (key e) (val e))
+  "not found")
+
+(if-let [[k v] (find {:a 5 :b 6} :a)]
+  (format "found %s=>%s" k v)
+  "not-found")
+
+(nth [:a :b :c] 2)
+(get [:a :b :c] 2)
+(nth [:a :b :c] 3)
+(get [:a :b :c] 3)
+(nth [:a :b :c] -1)
+(get [:a :b :c] -1)
+
+(nth [:a :b :c] -1 :not-found)
+(get [:a :b :c] -1 :not-found)
 
 
 

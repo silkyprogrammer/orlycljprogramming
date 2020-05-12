@@ -112,7 +112,13 @@
 (let [[x & rest] (random-ints 50)])
 (dorun (take 5 (random-ints 50)))
 
+(doc iterate)
+(doc reverse)
 
+(apply
+  str
+  (remove (set "aeiouy")
+  "vowels are useless! or may be not ..."))
 
 
 

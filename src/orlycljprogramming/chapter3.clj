@@ -199,6 +199,23 @@
 (nth [:a :b :c] -1 :not-found)
 (get [:a :b :c] -1 :not-found)
 
+;; stacks in clojure achieved through conj, pop, peek
+;; lists and vectors are used as stacks.
+
+(conj '() 1)
+(conj '(2 1) 3)
+(peek '(3 2 1))
+(pop '(3 2 1))
+(pop '(1))
+
+(conj [] 1)
+(conj [1 2] 3)
+(peek [1 2 3])
+(pop [1 2 3])
+(pop [1])
+;; gets an error, coz stack is empty
+(pop [])
+
 
 
 

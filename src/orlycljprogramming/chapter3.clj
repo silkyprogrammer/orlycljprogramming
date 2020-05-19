@@ -216,8 +216,32 @@
 ;; gets an error, coz stack is empty
 (pop [])
 
+;Set
+(get #{1 2 3} 2)
+(get #{1 2 3} 4)
+(get #{1 2 3} 4 "not-found")
+(disj #{1 2 3} 3 1)
+
+(def sm (sorted-map :z 5 :x 9 :y 0 :b 2 :a 3 :c 4))
+(rseq sm)
+(subseq sm <= :c)
+(rsubseq sm <= :c)
+(subseq sm > :b <= :y)
+(rsubseq sm > :b <= :y)
 
 
+(compare 2 2)
+(compare "ab" "abc")
+(compare ["a" "b" "c"] ["a" "b"])
+(compare ["a" 2] ["a" 2 0])
+
+
+(sort < (repeatedly 10 #(rand-int 100)))
+(sort-by first > (map-indexed vector "Clojure"))
+
+(map :name [{:age 21 :name "david"}
+            {:gender :f :name "Suzanne"}
+            {:name "Sara" :location "NYC"}])
 
 
 

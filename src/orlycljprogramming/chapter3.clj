@@ -249,9 +249,16 @@
 (filter :age [{:age 21 :name "David"}
               {:gender :f :name "Suzanne"}
               {:name "Sara" :location "NYC"}])
+
 (filter (comp (partial <= 25) :age)
         [{:age 21 :name "David"}
          {:gender :f :name "Suzanne" :age 20}
          {:name "Sara" :location "NYC" :age 34}])
+
+(remove #{5 7} (cons false (range 10)))
+(remove #{5 7 false} (cons false (range 10)))
+(remove (partial contains? #{5 7 false})(cons false (range 10)))
+
+
 
 

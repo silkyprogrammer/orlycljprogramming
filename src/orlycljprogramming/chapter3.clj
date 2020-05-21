@@ -273,3 +273,14 @@
 
 (let [[q r] (euclidian-division 53 7)]
   (str "53/7=" q " * 7 + " r))
+
+(apply str (remove (set "aeiou") "vowels are useless"))
+(defn numeric?
+  "docstring"
+  [s]
+  (every? (set "0123456789") s)
+  )
+(numeric? "123")
+(numeric? "42b")
+(numeric? "456")
+

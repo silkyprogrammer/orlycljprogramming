@@ -260,5 +260,16 @@
 (remove (partial contains? #{5 7 false})(cons false (range 10)))
 
 
+'(1 2 3)
+'(1 2 (+ 1 2))
+(list 1 2 (+ 1 2))
+
+(defn euclidian-division
+  "Result,Quotient"
+  [x y]
+  [(quot x y) (rem x y)]
+  )
 
 
+(let [[q r] (euclidian-division 53 7)]
+  (str "53/7=" q " * 7 + " r))

@@ -284,3 +284,18 @@
 (numeric? "42b")
 (numeric? "456")
 
+(def playlist
+  [
+   {:title "Elephant", :artist "The White Stripes", :year 2003}
+   {:title "Helioself", :artist "Papas Fritas", :year 1997}
+   {:title "Zen Rodeo", :artist "Madri Gras BB", :year 2002}
+   ]
+  )
+
+(defn summarize
+  "docstring"
+  [{:keys [title artist year]}]
+  (str title "/" artist "/" year)
+  )
+
+(group-by #(rem % 3) (range 10))
